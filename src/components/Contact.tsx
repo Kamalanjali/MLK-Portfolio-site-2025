@@ -1,8 +1,18 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/enhanced-card"
 import { Button } from "@/components/ui/enhanced-button"
-import { Github, Linkedin, Mail, Phone, MapPin, Download } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
+import { Github, Linkedin, Mail, MapPin, Download, Send } from "lucide-react"
+import { useState } from "react"
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6" />,
@@ -12,13 +22,6 @@ const Contact = () => {
       color: "text-primary"
     },
     {
-      icon: <Phone className="w-6 h-6" />,
-      label: "Phone",
-      value: "+91 8309452896",
-      href: "tel:+918309452896",
-      color: "text-accent"
-    },
-    {
       icon: <MapPin className="w-6 h-6" />,
       label: "Location",
       value: "Hyderabad, Telangana, India",
@@ -26,6 +29,19 @@ const Contact = () => {
       color: "text-accent-soft"
     }
   ]
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle form submission here
+    console.log('Form submitted:', formData)
+  }
 
   const socialLinks = [
     {
@@ -81,40 +97,9 @@ const Contact = () => {
                   </div>
                 </div>
               ))}
-            </CardContent>
-          </Card>
-
-          {/* Quick Actions */}
-          <Card variant="glass" className="animate-fade-in-right">
-            <CardHeader>
-              <CardTitle className="text-2xl">Quick Actions</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {/* Resume Download */}
-              <div className="space-y-4">
-                <Button 
-                  variant="hero" 
-                  size="lg" 
-                  className="w-full group"
-                >
-                  <Download className="mr-2 group-hover:rotate-12 transition-transform" />
-                  Download Resume
-                </Button>
-                <Button 
-                  variant="glass" 
-                  size="lg" 
-                  className="w-full"
-                  asChild
-                >
-                  <a href="mailto:kamalanjalimetta31@gmail.com">
-                    <Mail className="mr-2" />
-                    Send Email
-                  </a>
-                </Button>
-              </div>
 
               {/* Social Links */}
-              <div>
+              <div className="mt-8">
                 <h3 className="text-lg font-semibold mb-4 text-primary">Connect With Me</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {socialLinks.map((social, index) => (
@@ -131,15 +116,83 @@ const Contact = () => {
                   ))}
                 </div>
               </div>
+            </CardContent>
+          </Card>
 
-              {/* Status */}
-              <div className="p-4 rounded-lg bg-gradient-glow border border-primary/20 text-center">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                  <span className="font-medium text-primary">Available for Work</span>
+          {/* Connect With Me Form */}
+          <Card variant="glass" className="animate-fade-in-right">
+            <CardHeader>
+              <CardTitle className="text-2xl">Connect With Me</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Your name"
+                    required
+                    className="bg-background-soft/50 border-border/30 focus:border-primary/50"
+                  />
                 </div>
-                <div className="text-sm text-muted-foreground">
-                  Open to full-time opportunities and freelance projects
+                
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="your.email@example.com"
+                    required
+                    className="bg-background-soft/50 border-border/30 focus:border-primary/50"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="message">Message</Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="Your message here..."
+                    rows={4}
+                    required
+                    className="bg-background-soft/50 border-border/30 focus:border-primary/50 resize-none"
+                  />
+                </div>
+                
+                <Button type="submit" variant="hero" size="lg" className="w-full group">
+                  <Send className="mr-2 group-hover:translate-x-1 transition-transform" />
+                  Send Message
+                </Button>
+              </form>
+
+              {/* Quick Actions */}
+              <div className="mt-8 space-y-4">
+                <Button 
+                  variant="glass" 
+                  size="lg" 
+                  className="w-full group"
+                >
+                  <Download className="mr-2 group-hover:rotate-12 transition-transform" />
+                  Download Resume
+                </Button>
+                
+                {/* Status */}
+                <div className="p-4 rounded-lg bg-gradient-glow border border-primary/20 text-center">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+                    <span className="font-medium text-primary">Available for Work</span>
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Open to full-time opportunities and freelance projects
+                  </div>
                 </div>
               </div>
             </CardContent>

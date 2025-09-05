@@ -26,6 +26,7 @@ const Education = () => {
       degree: "10th Class",
       institution: "Sri Chaitanya English Medium School, Anakapalle",
       duration: "2014",
+      score: "CGPA: 9.8/10",
       board: "Secondary School of Education, Andhra Pradesh",
       type: "school"
     }

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/enhanced-button"
 import { Github, Linkedin, Mail, Phone, Download } from "lucide-react"
 import heroBackground from "@/assets/hero-background.jpg"
+const profilePhotoUrl = "/lovable-uploads/dbe46c0f-a10d-4d8a-80c9-33bfeaa203ca.png"
 
 const Hero = () => {
   return (
@@ -16,6 +17,19 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
         <div className="animate-fade-in">
+          {/* Profile Photo */}
+          <div className="mb-8 flex justify-center">
+            <div className="relative">
+              <img 
+                src={profilePhotoUrl} 
+                alt="Lakshmi Kamalanjali Mandalika" 
+                className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover object-center border-4 border-primary/30 shadow-glow hover:scale-105 transition-transform duration-300"
+                style={{ objectPosition: 'center top' }}
+              />
+              <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-20 animate-pulse" />
+            </div>
+          </div>
+          
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Lakshmi Kamalanjali
           </h1>
@@ -35,7 +49,11 @@ const Hero = () => {
             <Download className="mr-2 group-hover:rotate-12 transition-transform" />
             Download Resume
           </Button>
-          <Button variant="glass" size="xl">
+          <Button 
+            variant="glass" 
+            size="xl"
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             View Projects
           </Button>
         </div>
