@@ -172,55 +172,9 @@ const Contact = () => {
                   Send Message
                 </Button>
               </form>
-
-              {/* Quick Actions */}
-              <div className="mt-8 space-y-4">
-                <Button 
-                  variant="glass" 
-                  size="lg" 
-                  className="w-full group"
-                >
-                  <Download className="mr-2 group-hover:rotate-12 transition-transform" />
-                  Download Resume
-                </Button>
-                
-                {/* Status */}
-                <div className="p-4 rounded-lg bg-gradient-glow border border-primary/20 text-center">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                    <span className="font-medium text-primary">Available for Work</span>
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    Open to full-time opportunities and freelance projects
-                  </div>
-                </div>
-              </div>
             </CardContent>
           </Card>
         </div>
-
-        {/* Personal Details */}
-        <Card variant="floating" className="mt-8 animate-fade-in">
-          <CardHeader>
-            <CardTitle className="text-2xl text-center">Personal Information</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div className="p-4 rounded-lg bg-background-soft/50 border border-border/30">
-                <div className="text-lg font-semibold text-primary">Name</div>
-                <div className="text-muted-foreground">Lakshmi Kamalanjali Mandalika</div>
-              </div>
-              <div className="p-4 rounded-lg bg-background-soft/50 border border-border/30">
-                <div className="text-lg font-semibold text-accent">Location</div>
-                <div className="text-muted-foreground">Hyderabad, Telangana, India</div>
-              </div>
-              <div className="p-4 rounded-lg bg-background-soft/50 border border-border/30">
-                <div className="text-lg font-semibold text-accent-soft">Status</div>
-                <div className="text-muted-foreground">Married</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </section>
   )

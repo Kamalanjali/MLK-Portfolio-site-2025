@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/enhanced-button"
-import { Menu, X, Download } from "lucide-react"
+import { Menu, X, Sun, Moon } from "lucide-react"
+import { useTheme } from "@/components/theme-provider"
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,8 +17,7 @@ const Navigation = () => {
   }, [])
 
   const navItems = [
-    { label: "Experience", href: "#experience" },
-    { label: "Education", href: "#education" },
+    { label: "Experience & Education", href: "#timeline" },
     { label: "Publications", href: "#publications" },
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" }
@@ -60,11 +61,19 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
-            <Button variant="hero" size="sm" className="group">
-              <Download className="mr-2 group-hover:rotate-12 transition-transform" />
-              Resume
+          {/* Theme Toggle & Desktop CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              className="rounded-full"
+            >
+              {theme === "light" ? (
+                <Moon className="h-5 w-5" />
+              ) : (
+                <Sun className="h-5 w-5" />
+              )}
             </Button>
           </div>
 
@@ -91,9 +100,23 @@ const Navigation = () => {
                 </button>
               ))}
               <div className="pt-4 border-t border-border/30">
-                <Button variant="hero" size="sm" className="w-full group">
-                  <Download className="mr-2 group-hover:rotate-12 transition-transform" />
-                  Download Resume
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                  className="w-full justify-start"
+                >
+                  {theme === "light" ? (
+                    <>
+                      <Moon className="h-5 w-5 mr-2" />
+                      Dark Mode
+                    </>
+                  ) : (
+                    <>
+                      <Sun className="h-5 w-5 mr-2" />
+                      Light Mode
+                    </>
+                  )}
                 </Button>
               </div>
             </div>
