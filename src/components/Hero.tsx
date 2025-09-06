@@ -15,31 +15,37 @@ const Hero = () => {
       </div>
       
       {/* Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="animate-fade-in">
-          {/* Profile Photo */}
-          <div className="mb-8 flex justify-center">
-            <div className="relative">
-              <img 
-                src={profilePhotoUrl} 
-                alt="Lakshmi Kamalanjali Mandalika" 
-                className="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-primary/30 shadow-glow hover:scale-105 transition-transform duration-300"
-                style={{ objectPosition: 'center 30%' }}
-              />
-              <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-20 animate-pulse" />
+          {/* Profile and Name Section */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-8">
+            {/* Profile Photo */}
+            <div className="flex-shrink-0">
+              <div className="relative">
+                <img 
+                  src={profilePhotoUrl} 
+                  alt="Lakshmi Kamalanjali Mandalika" 
+                  className="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-primary/30 shadow-glow hover:scale-105 transition-transform duration-300"
+                  style={{ objectPosition: 'center 30%' }}
+                />
+                <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-20 animate-pulse" />
+              </div>
             </div>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-            Lakshmi Kamalanjali
-          </h1>
-          <h2 className="text-6xl md:text-8xl font-light mb-4">
-            Mandalika
-          </h2>
-          <div className="text-xl md:text-2xl text-muted-foreground mb-8 animate-fade-in-left">
-            <p className="mb-2">Full Stack Developer</p>
-            <p className="text-lg">MERN Stack • Python • IoT</p>
-            <p className="text-base mt-4 text-accent">Hyderabad, Telangana, India</p>
+            
+            {/* Name and Title */}
+            <div className="text-center md:text-left">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
+                Lakshmi Kamalanjali
+              </h1>
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-light mb-4">
+                Mandalika
+              </h2>
+              <div className="text-xl md:text-2xl text-muted-foreground animate-fade-in-left">
+                <p className="mb-2">Full Stack Developer</p>
+                <p className="text-lg">MERN Stack • Python • IoT</p>
+                <p className="text-base mt-4 text-accent">Hyderabad, Telangana, India</p>
+              </div>
+            </div>
           </div>
         </div>
 
