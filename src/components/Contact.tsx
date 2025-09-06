@@ -149,7 +149,7 @@ const Contact = () => {
           {/* Connect With Me Form */}
           <Card variant="glass" className="animate-fade-in-right">
             <CardHeader>
-              <CardTitle className="text-2xl">Reach Out</CardTitle>
+              <CardTitle className="text-2xl">Let's get in touch</CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
