@@ -49,7 +49,14 @@ const Hero = () => {
             variant="hero" 
             size="xl" 
             className="group"
-            onClick={() => window.open('https://github.com/Kamalanjali/Kamalanjali/blob/main/MLK_Resume_2025.pdf', '_blank')}
+            onClick={() => {
+              const link = document.createElement('a');
+              link.href = 'https://github.com/Kamalanjali/Kamalanjali/raw/main/MLK_Resume_2025.pdf';
+              link.download = 'Lakshmi_Kamalanjali_Resume_2025.pdf';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }}
           >
             <Download className="mr-2 group-hover:rotate-12 transition-transform" />
             Download Resume
