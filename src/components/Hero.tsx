@@ -23,8 +23,8 @@ const Hero = () => {
               <img 
                 src={profilePhotoUrl} 
                 alt="Lakshmi Kamalanjali Mandalika" 
-                className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover object-center border-4 border-primary/30 shadow-glow hover:scale-105 transition-transform duration-300"
-                style={{ objectPosition: 'center top' }}
+                className="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-primary/30 shadow-glow hover:scale-105 transition-transform duration-300"
+                style={{ objectPosition: 'center 30%' }}
               />
               <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-20 animate-pulse" />
             </div>
@@ -45,7 +45,12 @@ const Hero = () => {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in-right">
-          <Button variant="hero" size="xl" className="group">
+          <Button 
+            variant="hero" 
+            size="xl" 
+            className="group"
+            onClick={() => window.open('https://github.com/Kamalanjali/Kamalanjali/blob/main/MLK_Resume_2025.pdf', '_blank')}
+          >
             <Download className="mr-2 group-hover:rotate-12 transition-transform" />
             Download Resume
           </Button>
