@@ -34,10 +34,10 @@ const Hero = () => {
             
             {/* Name and Title */}
             <div className="text-center md:text-left">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent font-poppins">
                 Lakshmi Kamalanjali
               </h1>
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-light mb-4">
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-light mb-4 font-poppins">
                 Mandalika
               </h2>
               <div className="text-xl md:text-2xl text-muted-foreground animate-fade-in-left">

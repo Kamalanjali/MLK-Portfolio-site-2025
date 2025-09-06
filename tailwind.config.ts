@@ -121,7 +121,10 @@ export default {
 				'smooth': 'var(--transition-smooth)',
 				'bounce': 'var(--transition-bounce)'
 			}
-		}
+			},
+			fontFamily: {
+				'poppins': ['Poppins', 'sans-serif'],
+			}
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;

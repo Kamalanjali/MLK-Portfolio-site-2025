@@ -115,6 +115,26 @@ const Contact = () => {
                     </a>
                   ))}
                 </div>
+                
+                {/* Download Resume Button */}
+                <div className="mt-6">
+                  <Button 
+                    variant="hero" 
+                    size="lg" 
+                    className="w-full group"
+                    onClick={() => {
+                      const link = document.createElement('a');
+                      link.href = 'https://github.com/Kamalanjali/Kamalanjali/raw/main/MLK_Resume_2025.pdf';
+                      link.download = 'Lakshmi_Kamalanjali_Resume_2025.pdf';
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                    }}
+                  >
+                    <Download className="mr-2 group-hover:rotate-12 transition-transform" />
+                    Download Resume
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
