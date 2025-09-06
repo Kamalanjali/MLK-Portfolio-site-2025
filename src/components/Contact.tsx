@@ -107,7 +107,7 @@ const Contact = () => {
 
               {/* Social Links */}
               <div className="mt-8">
-                <h3 className="text-lg font-semibold mb-4 text-primary">Socials</h3>
+                <h3 className="text-lg font-semibold mb-4 text-primary">Connect With Me</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {socialLinks.map((social, index) => (
                     <a
