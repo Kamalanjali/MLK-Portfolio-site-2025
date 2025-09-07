@@ -115,6 +115,41 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  /* Animation base states - elements start invisible */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .scroll-animate-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .scroll-animate-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  /* Animation visible states */
+  .scroll-animate.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .scroll-animate-left.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .scroll-animate-right.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
   /* Ensure animations work on all devices including mobile */
   .animate-fade-in,
   .animate-fade-in-left,
@@ -133,13 +168,21 @@ All colors MUST be HSL.
 
   /* Respect user motion preferences */
   @media (prefers-reduced-motion: reduce) {
-    .animate-fade-in,
-    .animate-fade-in-left,
-    .animate-fade-in-right,
+    .scroll-animate,
+    .scroll-animate-left,
+    .scroll-animate-right,
     .animate-glow-pulse,
     .animate-float,
     .animate-scale-in {
       animation: none !important;
+      transition: none !important;
+    }
+    
+    .scroll-animate,
+    .scroll-animate-left,
+    .scroll-animate-right {
+      opacity: 1 !important;
+      transform: none !important;
       transition: none !important;
     }
   }

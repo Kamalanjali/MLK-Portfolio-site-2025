@@ -5,8 +5,57 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Github, Linkedin, Mail, MapPin, Download, Send, Phone } from "lucide-react"
 import { useState } from "react"
+import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+
+  const contactInfo = [
+    {
+      icon: <Mail className="w-6 h-6" />,
+      label: "Email",
+      value: "kamalanjalimetta31@gmail.com",
+      href: "mailto:kamalanjalimetta31@gmail.com",
+      color: "text-primary"
+    },
+    {
+      icon: <Phone className="w-6 h-6" />,
+      label: "Phone",
+      value: "+91 8309452896",
+      href: "tel:+918309452896",
+      color: "text-accent"
+    },
+    {
+      icon: <MapPin className="w-6 h-6" />,
+      label: "Location",
+      value: "Hyderabad, Telangana, India",
+      href: null,
+      color: "text-accent-soft"
+    }
+  ]
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle form submission here
+    console.log('Form submitted:', formData)
+  }
+
+const Contact = () => {
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation()
+  const { elementRef: leftCardRef, isVisible: leftCardVisible } = useScrollAnimation()
+  const { elementRef: rightCardRef, isVisible: rightCardVisible } = useScrollAnimation()
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -68,7 +117,10 @@ const Contact = () => {
   return (
     <section className="py-20 px-6" id="contact">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
+        <div 
+          ref={titleRef}
+          className={`text-center mb-16 scroll-animate ${titleVisible ? 'animate-in' : ''}`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
             Get In Touch
           </h2>
@@ -79,7 +131,11 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact Information */}
-          <Card variant="glass" className="animate-fade-in-left">
+          <Card 
+            ref={leftCardRef}
+            variant="glass" 
+            className={`scroll-animate-left ${leftCardVisible ? 'animate-in' : ''}`}
+          >
             <CardHeader>
               <CardTitle className="text-2xl">Contact Information</CardTitle>
             </CardHeader>
@@ -147,7 +203,11 @@ const Contact = () => {
           </Card>
 
           {/* Connect With Me Form */}
-          <Card variant="glass" className="animate-fade-in-right">
+          <Card 
+            ref={rightCardRef}
+            variant="glass" 
+            className={`scroll-animate-right ${rightCardVisible ? 'animate-in' : ''}`}
+          >
             <CardHeader>
               <CardTitle className="text-2xl">Let's get in touch</CardTitle>
             </CardHeader>

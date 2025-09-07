@@ -2,12 +2,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/enhanced-button"
 import { Badge } from "@/components/ui/badge"
 import { Github, ExternalLink, ShoppingCart, Code, Layers, Database } from "lucide-react"
+import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const Projects = () => {
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation()
+  const { elementRef: cardRef, isVisible: cardVisible } = useScrollAnimation()
+  
   return (
     <section className="py-20 px-6" id="projects">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
+        <div 
+          ref={titleRef}
+          className={`text-center mb-16 scroll-animate ${titleVisible ? 'animate-in' : ''}`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
             Current Projects
           </h2>
@@ -16,7 +23,11 @@ const Projects = () => {
           </p>
         </div>
 
-        <Card variant="glass" className="animate-fade-in-right">
+        <Card 
+          ref={cardRef}
+          variant="glass" 
+          className={`scroll-animate-right ${cardVisible ? 'animate-in' : ''}`}
+        >
           <CardHeader>
             <div className="flex items-start gap-4">
               <div className="p-4 rounded-lg bg-accent/10 border border-accent/20">
