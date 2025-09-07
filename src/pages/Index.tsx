@@ -4,6 +4,7 @@ import Timeline from "@/components/Timeline"
 import Publications from "@/components/Publications"
 import Projects from "@/components/Projects"
 import Contact from "@/components/Contact"
+import ScrollToTop from "@/components/ScrollToTop"
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <Publications />
       <Projects />
       <Contact />
+      <ScrollToTop />
     </div>
   );
 };
