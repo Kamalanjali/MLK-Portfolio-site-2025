@@ -5,7 +5,7 @@ const profilePhotoUrl = "/lovable-uploads/dbe46c0f-a10d-4d8a-80c9-33bfeaa203ca.p
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
