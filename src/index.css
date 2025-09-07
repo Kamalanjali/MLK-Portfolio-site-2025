@@ -112,34 +112,35 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+}
 
+@layer utilities {
   /* Ensure animations work on all devices including mobile */
-  * {
+  .animate-fade-in,
+  .animate-fade-in-left,
+  .animate-fade-in-right,
+  .animate-glow-pulse,
+  .animate-float,
+  .animate-scale-in {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-perspective: 1000px;
     perspective: 1000px;
   }
 
-  /* Force hardware acceleration for better performance on mobile */
-  .animate-fade-in,
-  .animate-fade-in-left,
-  .animate-fade-in-right,
-  .animate-glow-pulse,
-  .animate-float {
-    will-change: transform, opacity;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-  }
-
   /* Respect user motion preferences */
   @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
+    .animate-fade-in,
+    .animate-fade-in-left,
+    .animate-fade-in-right,
+    .animate-glow-pulse,
+    .animate-float,
+    .animate-scale-in {
+      animation: none !important;
+      transition: none !important;
     }
   }
 
@@ -159,5 +160,18 @@ All colors MUST be HSL.
       transform: scale(1.05);
       transition: transform 0.15s ease;
     }
+  }
+
+  /* Additional animation utility classes */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 600ms;
   }
 }
