@@ -112,4 +112,52 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Ensure animations work on all devices including mobile */
+  * {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+  }
+
+  /* Force hardware acceleration for better performance on mobile */
+  .animate-fade-in,
+  .animate-fade-in-left,
+  .animate-fade-in-right,
+  .animate-glow-pulse,
+  .animate-float {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  /* Respect user motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Ensure animations work on touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .hover\:scale-105:hover,
+    .hover\:scale-110:hover,
+    .group:hover .group-hover\:scale-110,
+    .group:hover .group-hover\:translate-x-1,
+    .group:hover .group-hover\:rotate-12 {
+      transform: none;
+    }
+    
+    /* Use active states for touch devices */
+    .hover\:scale-105:active,
+    .hover\:scale-110:active {
+      transform: scale(1.05);
+      transition: transform 0.15s ease;
+    }
+  }
 }
