@@ -60,35 +60,38 @@ const Contact = () => {
     setIsSubmitting(true)
     
     try {
-      // EmailJS configuration - you'll need to set up your EmailJS account
-      await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          to_email: 'kamalanjalimetta31@gmail.com',
-          message: formData.message,
-        },
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      // Create mailto link as primary method since it works immediately
+      const subject = encodeURIComponent(`Portfolio Contact: Message from ${formData.name}`)
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\n` +
+        `Email: ${formData.email}\n\n` +
+        `Message:\n${formData.message}\n\n` +
+        `---\nSent via portfolio contact form`
       )
+      const mailtoLink = `mailto:kamalanjalimetta31@gmail.com?subject=${subject}&body=${body}`
+      
+      // Open mailto link
+      window.open(mailtoLink, '_blank')
       
       toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        title: "Email client opened!",
+        description: "Your default email client should open with the message pre-filled.",
       })
       
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      })
+      // Reset form after short delay
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        })
+      }, 1000)
+      
     } catch (error) {
-      console.error('Email sending failed:', error)
+      console.error('Failed to open email client:', error)
       toast({
-        title: "Failed to send message",
-        description: "Please try again or contact me directly via email.",
+        title: "Please copy this information",
+        description: `Send email to: kamalanjalimetta31@gmail.com with your message.`,
         variant: "destructive"
       })
     } finally {
