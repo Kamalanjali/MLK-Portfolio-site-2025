@@ -60,38 +60,44 @@ const Contact = () => {
     setIsSubmitting(true)
     
     try {
-      // Create mailto link as primary method since it works immediately
-      const subject = encodeURIComponent(`Portfolio Contact: Message from ${formData.name}`)
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\n` +
-        `Email: ${formData.email}\n\n` +
-        `Message:\n${formData.message}\n\n` +
-        `---\nSent via portfolio contact form`
-      )
-      const mailtoLink = `mailto:kamalanjalimetta31@gmail.com?subject=${subject}&body=${body}`
+      // Initialize EmailJS with your public key
+      emailjs.init("YOUR_PUBLIC_KEY") // Replace with your actual EmailJS public key
       
-      // Open mailto link
-      window.open(mailtoLink, '_blank')
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID  
+        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          to_name: "Lakshmi Kamalanjali",
+          to_email: "kamalanjalimetta31@gmail.com",
+          subject: `Portfolio Contact: Message from ${formData.name}`,
+          message: formData.message,
+          reply_to: formData.email,
+        }
+      )
+      
+      console.log('Email sent successfully:', result)
       
       toast({
-        title: "Email client opened!",
-        description: "Your default email client should open with the message pre-filled.",
+        title: "Message sent successfully!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
       })
       
-      // Reset form after short delay
-      setTimeout(() => {
-        setFormData({
-          name: '',
-          email: '',
-          message: ''
-        })
-      }, 1000)
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      })
       
     } catch (error) {
-      console.error('Failed to open email client:', error)
+      console.error('Email sending failed:', error)
+      
       toast({
-        title: "Please copy this information",
-        description: `Send email to: kamalanjalimetta31@gmail.com with your message.`,
+        title: "Setup Required",
+        description: "Please configure EmailJS credentials to enable email sending.",
         variant: "destructive"
       })
     } finally {
