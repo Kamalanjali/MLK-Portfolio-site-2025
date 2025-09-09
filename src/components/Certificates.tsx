@@ -1,10 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/enhanced-card"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/enhanced-button"
 import { ExternalLink, Award } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
-import courseraCert from "@/assets/coursera-python-certificate.png"
-import udemyCert from "@/assets/udemy-java-certificate.png"
-import hackerrankCert from "@/assets/hackerrank-sql-certificate.png"
 
 const Certificates = () => {
   const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation()
@@ -14,26 +12,26 @@ const Certificates = () => {
     {
       title: "Python for Everybody",
       provider: "Coursera",
-      image: courseraCert,
       link: "https://coursera.org/share/a8dc742978b80c5b52e6ab8e0b3d3b01",
       category: "Programming",
-      color: "bg-primary/10 text-primary"
+      color: "bg-primary/10 text-primary",
+      description: "Complete specialization covering Python programming fundamentals"
     },
     {
       title: "Java Tutorial for Complete Beginners", 
       provider: "Udemy",
-      image: udemyCert,
-      link: "ude.my/UC-d46a749f-5e81-4e3b-aa59-7755b7582545",
+      link: "https://ude.my/UC-d46a749f-5e81-4e3b-aa59-7755b7582545",
       category: "Programming",
-      color: "bg-accent/10 text-accent"
+      color: "bg-accent/10 text-accent",
+      description: "Comprehensive Java programming course for beginners"
     },
     {
       title: "SQL (Basics)",
       provider: "HackerRank", 
-      image: hackerrankCert,
       link: "https://www.hackerrank.com/certificates/7bb4c60763ce",
       category: "Database",
-      color: "bg-accent-soft/10 text-accent-soft"
+      color: "bg-accent-soft/10 text-accent-soft",
+      description: "Fundamental SQL skills and database querying"
     }
   ]
 
@@ -60,8 +58,7 @@ const Certificates = () => {
             <Card 
               key={index} 
               variant="glass" 
-              className="group hover:scale-105 transition-all duration-300 cursor-pointer"
-              onClick={() => window.open(cert.link, '_blank')}
+              className="group hover:scale-105 transition-all duration-300"
             >
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between mb-3">
@@ -70,7 +67,7 @@ const Certificates = () => {
                     {cert.category}
                   </Badge>
                 </div>
-                <CardTitle className="text-lg leading-tight group-hover:text-primary transition-colors">
+                <CardTitle className="text-lg leading-tight">
                   {cert.title}
                 </CardTitle>
                 <p className="text-sm text-muted-foreground font-medium">
@@ -78,16 +75,17 @@ const Certificates = () => {
                 </p>
               </CardHeader>
               <CardContent className="pt-0">
-                <div className="relative overflow-hidden rounded-lg border border-border/30 mb-4">
-                  <img 
-                    src={cert.image} 
-                    alt={`${cert.title} Certificate`}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                    <ExternalLink className="w-6 h-6 text-primary" />
-                  </div>
-                </div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  {cert.description}
+                </p>
+                <Button 
+                  variant="outline" 
+                  className="w-full group"
+                  onClick={() => window.open(cert.link, '_blank')}
+                >
+                  <ExternalLink className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
+                  View Certificate
+                </Button>
               </CardContent>
             </Card>
           ))}
