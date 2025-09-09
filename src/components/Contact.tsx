@@ -6,18 +6,23 @@ import { Label } from "@/components/ui/label"
 import { Github, Linkedin, Mail, MapPin, Download, Send, Phone } from "lucide-react"
 import { useState } from "react"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
+import emailjs from '@emailjs/browser'
+import { useToast } from "@/components/ui/use-toast"
 
 
 const Contact = () => {
   const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation()
   const { elementRef: leftCardRef, isVisible: leftCardVisible } = useScrollAnimation()
   const { elementRef: rightCardRef, isVisible: rightCardVisible } = useScrollAnimation()
+  const { toast } = useToast()
   
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   })
+  
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const contactInfo = [
     {
@@ -50,10 +55,45 @@ const Contact = () => {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    
+    try {
+      // EmailJS configuration - you'll need to set up your EmailJS account
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          to_email: 'kamalanjalimetta31@gmail.com',
+          message: formData.message,
+        },
+        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      )
+      
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      })
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      })
+    } catch (error) {
+      console.error('Email sending failed:', error)
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive"
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const socialLinks = [
@@ -211,9 +251,15 @@ const Contact = () => {
                   />
                 </div>
                 
-                <Button type="submit" variant="hero" size="lg" className="w-full group">
-                  <Send className="mr-2 group-hover:translate-x-1 transition-transform" />
-                  Send Message
+                <Button 
+                  type="submit" 
+                  variant="hero" 
+                  size="lg" 
+                  className="w-full group"
+                  disabled={isSubmitting}
+                >
+                  <Send className={`mr-2 transition-transform ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'}`} />
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </CardContent>
