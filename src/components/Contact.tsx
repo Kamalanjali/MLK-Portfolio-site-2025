@@ -7,49 +7,6 @@ import { Github, Linkedin, Mail, MapPin, Download, Send, Phone } from "lucide-re
 import { useState } from "react"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
-
-  const contactInfo = [
-    {
-      icon: <Mail className="w-6 h-6" />,
-      label: "Email",
-      value: "kamalanjalimetta31@gmail.com",
-      href: "mailto:kamalanjalimetta31@gmail.com",
-      color: "text-primary"
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      label: "Phone",
-      value: "+91 8309452896",
-      href: "tel:+918309452896",
-      color: "text-accent"
-    },
-    {
-      icon: <MapPin className="w-6 h-6" />,
-      label: "Location",
-      value: "Hyderabad, Telangana, India",
-      href: null,
-      color: "text-accent-soft"
-    }
-  ]
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-  }
 
 const Contact = () => {
   const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation()
