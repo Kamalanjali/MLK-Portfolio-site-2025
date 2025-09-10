@@ -61,7 +61,7 @@ const Contact = () => {
     
     try {
       // Initialize EmailJS with your public key
-      emailjs.init("YOUR_PUBLIC_KEY") // Replace with your actual EmailJS public key
+      emailjs.init("zvenMbJ8gkX-mU9Ir") // Your EmailJS public key
       
       // Send email using EmailJS
       const result = await emailjs.send(
