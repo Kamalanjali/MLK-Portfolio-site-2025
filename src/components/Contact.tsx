@@ -100,13 +100,9 @@ const Contact = () => {
         "service_ufspzow", // Your EmailJS service ID  
         "template_9epftxa", // Your EmailJS template ID
         {
-          from_name: validatedData.name,
-          from_email: validatedData.email,
-          to_name: "Lakshmi Kamalanjali",
-          to_email: "kamalanjalimetta31@gmail.com",
-          subject: `Portfolio Contact: Message from ${validatedData.name}`,
+          user_name: validatedData.name,
+          user_email: validatedData.email,
           message: validatedData.message,
-          reply_to: validatedData.email,
         }
       )
       
