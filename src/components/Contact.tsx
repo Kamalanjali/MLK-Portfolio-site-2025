@@ -2,12 +2,40 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/enhanc
 import { Button } from "@/components/ui/enhanced-button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
 import { Github, Linkedin, Mail, MapPin, Download, Send, Phone } from "lucide-react"
 import { useState } from "react"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 import emailjs from '@emailjs/browser'
 import { useToast } from "@/components/ui/use-toast"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+
+// Validation schema
+const contactFormSchema = z.object({
+  name: z.string()
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name must be less than 50 characters")
+    .regex(/^[a-zA-Z\s]*$/, "Name can only contain letters and spaces"),
+  email: z.string()
+    .email("Please enter a valid email address")
+    .min(5, "Email must be at least 5 characters")
+    .max(100, "Email must be less than 100 characters"),
+  message: z.string()
+    .min(10, "Message must be at least 10 characters")
+    .max(1000, "Message must be less than 1000 characters")
+    .regex(/\S/, "Message cannot be empty or contain only whitespace")
+})
+
+type ContactFormData = z.infer<typeof contactFormSchema>
 
 
 const Contact = () => {
@@ -16,13 +44,16 @@ const Contact = () => {
   const { elementRef: rightCardRef, isVisible: rightCardVisible } = useScrollAnimation()
   const { toast } = useToast()
   
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
-  
   const [isSubmitting, setIsSubmitting] = useState(false)
+  
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  })
 
   const contactInfo = [
     {
@@ -48,33 +79,34 @@ const Contact = () => {
     }
   ]
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
     
+    // Additional server-side style validation to prevent bypassing
     try {
+      // Re-validate the data even if form validation passed
+      const validatedData = contactFormSchema.parse(data)
+      
+      // Additional security checks
+      if (!validatedData.name.trim() || !validatedData.email.trim() || !validatedData.message.trim()) {
+        throw new Error("All fields are required")
+      }
+      
       // Initialize EmailJS with your public key
       emailjs.init("zvenMbJ8gkX-mU9Ir") // Your EmailJS public key
       
       // Send email using EmailJS
       const result = await emailjs.send(
         "service_ufspzow", // Your EmailJS service ID  
-        "template_29de329", // Your EmailJS template ID
+        "template_9epftxa", // Your EmailJS template ID
         {
-          from_name: formData.name,
-          from_email: formData.email,
+          from_name: validatedData.name,
+          from_email: validatedData.email,
           to_name: "Lakshmi Kamalanjali",
           to_email: "kamalanjalimetta31@gmail.com",
-          subject: `Portfolio Contact: Message from ${formData.name}`,
-          message: formData.message,
-          reply_to: formData.email,
+          subject: `Portfolio Contact: Message from ${validatedData.name}`,
+          message: validatedData.message,
+          reply_to: validatedData.email,
         }
       )
       
@@ -86,20 +118,24 @@ const Contact = () => {
       })
       
       // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      })
+      form.reset()
       
     } catch (error) {
       console.error('Email sending failed:', error)
       
-      toast({
-        title: "Setup Required",
-        description: "Please configure EmailJS credentials to enable email sending.",
-        variant: "destructive"
-      })
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Validation Error",
+          description: "Please fill in all fields correctly.",
+          variant: "destructive"
+        })
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again.",
+          variant: "destructive"
+        })
+      }
     } finally {
       setIsSubmitting(false)
     }
@@ -218,59 +254,76 @@ const Contact = () => {
               <CardTitle className="text-2xl">Let's get in touch</CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input
-                    id="name"
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+                  <FormField
+                    control={form.control}
                     name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Your name"
-                    required
-                    className="bg-background-soft/50 border-border/30 focus:border-primary/50"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Name</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Your name"
+                            className="bg-background-soft/50 border-border/30 focus:border-primary/50"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
+                  
+                  <FormField
+                    control={form.control}
                     name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="your.email@example.com"
-                    required
-                    className="bg-background-soft/50 border-border/30 focus:border-primary/50"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="email"
+                            placeholder="your.email@example.com"
+                            className="bg-background-soft/50 border-border/30 focus:border-primary/50"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
+                  
+                  <FormField
+                    control={form.control}
                     name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Your message here..."
-                    rows={4}
-                    required
-                    className="bg-background-soft/50 border-border/30 focus:border-primary/50 resize-none"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Message</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder="Your message here..."
+                            rows={4}
+                            className="bg-background-soft/50 border-border/30 focus:border-primary/50 resize-none"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
                 
-                <Button 
-                  type="submit" 
-                  variant="hero" 
-                  size="lg" 
-                  className="w-full group"
-                  disabled={isSubmitting}
-                >
-                  <Send className={`mr-2 transition-transform ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'}`} />
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </Button>
-              </form>
+                  <Button 
+                    type="submit" 
+                    variant="hero" 
+                    size="lg" 
+                    className="w-full group"
+                    disabled={isSubmitting}
+                  >
+                    <Send className={`mr-2 transition-transform ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'}`} />
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
+                </form>
+              </Form>
             </CardContent>
           </Card>
         </div>
