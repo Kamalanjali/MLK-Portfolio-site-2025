@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/enhanc
 import { Button } from "@/components/ui/enhanced-button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Github, Linkedin, Mail, MapPin, Download, Send, Phone } from "lucide-react"
+import { Github, Linkedin, Mail, MapPin, Download, Send } from "lucide-react"
 import { useState } from "react"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 import emailjs from '@emailjs/browser'
@@ -62,13 +62,6 @@ const Contact = () => {
       value: "kamalanjalimetta31@gmail.com",
       href: "mailto:kamalanjalimetta31@gmail.com",
       color: "text-primary"
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      label: "Phone",
-      value: "+91 8309452896",
-      href: "tel:+918309452896",
-      color: "text-accent"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
