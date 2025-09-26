@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/enhanced-button"
-import { Github, Linkedin, Mail, Phone, Download } from "lucide-react"
+import { Github, Linkedin, Mail, Download } from "lucide-react"
 import heroBackground from "@/assets/hero-background.jpg"
 const profilePhotoUrl = "/lovable-uploads/dbe46c0f-a10d-4d8a-80c9-33bfeaa203ca.png"
 
@@ -99,12 +99,6 @@ const Hero = () => {
             className="p-3 rounded-full bg-card/40 backdrop-blur-glass border border-border/50 hover:bg-card/60 hover:border-primary/30 transition-all duration-300 hover:shadow-glow hover:scale-110"
           >
             <Mail className="w-6 h-6" />
-          </a>
-          <a 
-            href="tel:+918309452896"
-            className="p-3 rounded-full bg-card/40 backdrop-blur-glass border border-border/50 hover:bg-card/60 hover:border-primary/30 transition-all duration-300 hover:shadow-glow hover:scale-110"
-          >
-            <Phone className="w-6 h-6" />
           </a>
         </div>
       </div>
