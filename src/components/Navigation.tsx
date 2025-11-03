@@ -20,6 +20,7 @@ const Navigation = () => {
     { label: "Experience & Education", href: "#timeline" },
     { label: "Publications", href: "#publications" },
     { label: "Projects", href: "#projects" },
+    { label: "Certificates", href: "#certificates" },
     { label: "Contact", href: "#contact" }
   ]
 
