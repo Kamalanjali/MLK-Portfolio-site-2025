@@ -10,6 +10,15 @@ const Certificates = () => {
 
   const certificates = [
     {
+      title: "Microsoft Certified: Azure Fundamentals",
+      provider: "Microsoft",
+      link: "https://learn.microsoft.com/api/credentials/share/en-us/MettaLakshmiKamalanjali-5202/7B7BB44AEAA0DC40?sharingId=398751272ACE944E",
+      category: "Cloud Computing",
+      color: "bg-primary/10 text-primary",
+      description: "Microsoft Azure cloud services and fundamentals certification",
+      highlighted: true
+    },
+    {
       title: "Python for Everybody",
       provider: "Coursera",
       link: "https://coursera.org/share/a8dc742978b80c5b52e6ab8e0b3d3b01",
@@ -58,16 +67,18 @@ const Certificates = () => {
             <Card 
               key={index} 
               variant="glass" 
-              className="group hover:scale-105 transition-all duration-300"
+              className={`group hover:scale-105 transition-all duration-300 ${
+                cert.highlighted ? 'md:col-span-2 lg:col-span-3 border-primary/50 shadow-glow' : ''
+              }`}
             >
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between mb-3">
-                  <Award className="w-6 h-6 text-primary" />
+                  <Award className={`w-6 h-6 ${cert.highlighted ? 'text-primary animate-pulse' : 'text-primary'}`} />
                   <Badge className={cert.color}>
                     {cert.category}
                   </Badge>
                 </div>
-                <CardTitle className="text-lg leading-tight">
+                <CardTitle className={`leading-tight ${cert.highlighted ? 'text-xl md:text-2xl' : 'text-lg'}`}>
                   {cert.title}
                 </CardTitle>
                 <p className="text-sm text-muted-foreground font-medium">
