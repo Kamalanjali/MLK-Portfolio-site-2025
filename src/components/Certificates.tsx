@@ -19,6 +19,15 @@ const Certificates = () => {
       highlighted: true
     },
     {
+      title: "Artificial Intelligence Fundamentals",
+      provider: "IBM SkillsBuild",
+      link: "https://www.credly.com/badges/5a48dba1-5a30-4f4c-b82c-01ca18e1fb57/public_url",
+      category: "Artificial Intelligence",
+      color: "bg-accent/10 text-accent",
+      description: "Foundational knowledge in artificial intelligence concepts and applications",
+      highlighted: true
+    },
+    {
       title: "Python for Everybody",
       provider: "Coursera",
       link: "https://coursera.org/share/a8dc742978b80c5b52e6ab8e0b3d3b01",
