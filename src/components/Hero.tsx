@@ -42,7 +42,7 @@ const Hero = () => {
               </h2>
               <div className="text-xl md:text-2xl text-muted-foreground animate-fade-in-left">
                 <p className="mb-2">Full Stack Developer</p>
-                <p className="text-lg">MERN Stack • Python • IoT</p>
+                <p className="text-lg">MERN Stack • Python • Cloud and AI enthusiast</p>
                 <p className="text-base mt-4 text-accent">Hyderabad, Telangana, India</p>
               </div>
             </div>
