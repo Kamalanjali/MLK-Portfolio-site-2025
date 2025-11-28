@@ -49,33 +49,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in-right">
-          <Button 
-            variant="hero" 
-            size="xl" 
-            className="group"
-            onClick={() => {
-              const link = document.createElement('a');
-              link.href = 'https://github.com/Kamalanjali/Kamalanjali/raw/main/MLK_Resume_2025.pdf';
-              link.download = 'Lakshmi_Kamalanjali_Resume_2025.pdf';
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-            }}
-          >
-            <Download className="mr-2 group-hover:rotate-12 transition-transform" />
-            Download Resume
-          </Button>
-          <Button 
-            variant="glass" 
-            size="xl"
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            View Projects
-          </Button>
-        </div>
-
         {/* Social Links */}
         <div className="flex justify-center gap-6 animate-fade-in">
           <a 
