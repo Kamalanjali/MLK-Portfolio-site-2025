@@ -35,13 +35,13 @@ const Projects = () => {
               </div>
               <div className="flex-1">
                 <CardTitle className="text-2xl leading-tight mb-3">
-                  Annam E-commerce Platform
+                  Satvik Basket
                 </CardTitle>
                 <CardDescription className="text-lg">
-                  Full-stack e-commerce solution built with MERN stack
+                  Full-stack e-commerce application built on the MERN stack
                 </CardDescription>
                 <Badge variant="outline" className="mt-3 bg-accent/10 text-accent border-accent/30">
-                  In Development
+                  Deployed
                 </Badge>
               </div>
             </div>
@@ -52,9 +52,9 @@ const Projects = () => {
             <div>
               <h3 className="text-xl font-semibold mb-4 text-primary">Project Overview</h3>
               <p className="text-card-foreground leading-relaxed">
-                Currently developing a comprehensive e-commerce platform focusing on food products. 
-                This project showcases modern web development practices using the MERN stack with 
-                emphasis on user experience, performance, and scalability.
+                A deployed full-stack e-commerce application built on the MERN stack, featuring
+                secure authentication, payment integration, order management, and a responsive,
+                user-friendly shopping experience.
               </p>
             </div>
 
@@ -86,15 +86,15 @@ const Projects = () => {
                 <div className="flex items-center gap-3 p-4 rounded-lg bg-background-soft/50 border border-border/30">
                   <ShoppingCart className="w-6 h-6 text-accent" />
                   <div>
-                    <div className="font-medium">Features</div>
-                    <div className="text-sm text-muted-foreground">Payment Integration</div>
+                    <div className="font-medium">Integrations</div>
+                    <div className="text-sm text-muted-foreground">Razorpay, Google OAuth, JWT</div>
                   </div>
                 </div>
               </div>
 
               {/* Technology Badges */}
               <div className="flex flex-wrap gap-3">
-                {["MongoDB", "Express.js", "React.js", "Node.js", "JavaScript", "CSS3", "HTML5", "Payment Gateway"].map((tech, index) => (
+                {["MongoDB", "Express.js", "React.js", "Node.js", "JWT", "Google OAuth", "Razorpay", "REST API"].map((tech, index) => (
                   <Badge 
                     key={index}
                     variant="secondary"
@@ -111,14 +111,16 @@ const Projects = () => {
               <h3 className="text-xl font-semibold mb-4 text-primary">Key Features</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {[
-                  "User Authentication & Authorization",
-                  "Product Catalog Management",
-                  "Shopping Cart & Checkout",
-                  "Payment Gateway Integration",
-                  "Order Management System",
-                  "Admin Dashboard",
-                  "Responsive Design",
-                  "RESTful API Architecture"
+                  "Google OAuth authentication",
+                  "Razorpay payment integration (test APIs, swappable to live)",
+                  "JWT-based secure sessions",
+                  "Orders page with order history",
+                  "Custom user profile page",
+                  "Shopping cart and checkout",
+                  "Multiple addresses with default selection",
+                  "Add and delete saved addresses",
+                  "Fully responsive design",
+                  "REST API architecture"
                 ].map((feature, index) => (
                   <div 
                     key={index}
@@ -140,7 +142,7 @@ const Projects = () => {
                 className="group"
               >
                 <a 
-                  href="https://github.com/Kamalanjali/annam-Ecommerce-MERN-stack-project" 
+                  href="https://github.com/Kamalanjali/Satvik-Basket-MERN-main" 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
@@ -151,10 +153,17 @@ const Projects = () => {
               <Button 
                 variant="glass" 
                 size="lg"
-                disabled
+                asChild
+                className="group"
               >
-                <ExternalLink className="mr-2" />
-                Live Demo (Coming Soon)
+                <a
+                  href="https://satvikbasket.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="mr-2" />
+                  Live Demo
+                </a>
               </Button>
             </div>
           </CardContent>
