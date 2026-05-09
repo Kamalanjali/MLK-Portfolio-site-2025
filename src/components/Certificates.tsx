@@ -19,6 +19,15 @@ const Certificates = () => {
       highlighted: true
     },
     {
+      title: "Microsoft Certified: Azure Developer Associate",
+      provider: "Microsoft",
+      link: "https://learn.microsoft.com/en-us/users/mettalakshmikamalanjali-5202/credentials/6aa5f46e944dac32?ref=https%3A%2F%2Fwww.linkedin.com%2F",
+      category: "Cloud Computing",
+      color: "bg-primary/10 text-primary",
+      description: "Azure development, services, and cloud solutions certification",
+      highlighted: true
+    },
+    {
       title: "Artificial Intelligence Fundamentals",
       provider: "IBM SkillsBuild",
       link: "https://www.credly.com/badges/5a48dba1-5a30-4f4c-b82c-01ca18e1fb57/public_url",
