@@ -1,104 +1,248 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/enhanced-card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/enhanced-card"
 import { Button } from "@/components/ui/enhanced-button"
 import { Badge } from "@/components/ui/badge"
-import { Github, ExternalLink, ShoppingCart, Code, Layers, Database } from "lucide-react"
+import {
+  Github,
+  ExternalLink,
+  ShieldCheck,
+  ShoppingBag,
+  CreditCard,
+  ServerCog,
+  CheckCircle2,
+  Activity,
+  Lock,
+  FileCheck2,
+  Terminal,
+  Layers,
+  CircleDot,
+} from "lucide-react"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
+
+type Pillar = {
+  icon: JSX.Element
+  title: string
+  blurb: string
+  items: string[]
+}
+
+type Group = {
+  icon: JSX.Element
+  title: string
+  items: string[]
+}
 
 const Projects = () => {
   const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation()
   const { elementRef: cardRef, isVisible: cardVisible } = useScrollAnimation()
-  
+
+  const pillars: Pillar[] = [
+    {
+      icon: <ShieldCheck className="w-5 h-5" />,
+      title: "Authentication & Authorization",
+      blurb: "Hardened identity layer with multiple sign-in paths and route-level access control.",
+      items: [
+        "Google OAuth 2.0",
+        "JWT authentication",
+        "Email / password login",
+        "Protected routes",
+        "Password reset flow",
+        "Profile management",
+        "Route-level authorization",
+        "Secure API authorization workflows",
+      ],
+    },
+    {
+      icon: <ShoppingBag className="w-5 h-5" />,
+      title: "Ecommerce Features",
+      blurb: "End-to-end shopping flow built around persistence, ownership, and reload safety.",
+      items: [
+        "Product listing and filtering",
+        "Cart management with persistence",
+        "Protected checkout flow",
+        "Address CRUD management",
+        "Order creation and order history",
+        "Order ownership validation",
+        "Reload-safe order success flow",
+      ],
+    },
+    {
+      icon: <CreditCard className="w-5 h-5" />,
+      title: "Payment Integration",
+      blurb: "Razorpay-backed payments with verified, server-side reconciliation.",
+      items: [
+        "Razorpay integration",
+        "Secure payment verification",
+        "Payment status handling",
+        "Backend verification workflows",
+        "Order / payment synchronization",
+      ],
+    },
+  ]
+
+  const productionGroups: Group[] = [
+    {
+      icon: <ServerCog className="w-5 h-5" />,
+      title: "Backend Reliability",
+      items: [
+        "Centralized error handling",
+        "Standardized API responses",
+        "Async error wrappers",
+        "Graceful shutdown handling",
+        "Process-level exception handling",
+        "Production-safe error masking",
+      ],
+    },
+    {
+      icon: <FileCheck2 className="w-5 h-5" />,
+      title: "Validation & API Safety",
+      items: [
+        "Zod validation middleware",
+        "Request payload validation",
+        "Consistent validation responses",
+        "Safer request lifecycle handling",
+      ],
+    },
+    {
+      icon: <Lock className="w-5 h-5" />,
+      title: "Security Hardening",
+      items: [
+        "Helmet security headers",
+        "API rate limiting",
+        "HPP protection",
+        "JWT hardening",
+        "Payload size limiting",
+        "Sensitive log redaction",
+        "Secure environment configuration",
+      ],
+    },
+    {
+      icon: <Activity className="w-5 h-5" />,
+      title: "Monitoring & Observability",
+      items: [
+        "Pino structured logging",
+        "Sentry runtime monitoring",
+        "/health operational endpoint",
+        "UptimeRobot uptime monitoring",
+        "Production diagnostics support",
+      ],
+    },
+    {
+      icon: <Terminal className="w-5 h-5" />,
+      title: "Operational Improvements",
+      items: [
+        "Cleaner middleware architecture",
+        "Improved request lifecycle management",
+        "Better authentication flow handling",
+        "Faster and more stable product loading",
+        "Improved debugging workflows",
+      ],
+    },
+  ]
+
+  const stack = [
+    "MongoDB",
+    "Express.js",
+    "React.js",
+    "Node.js",
+    "JWT",
+    "Google OAuth",
+    "Razorpay",
+    "Zod",
+    "Helmet",
+    "Pino",
+    "Sentry",
+    "REST API",
+  ]
+
   return (
     <section className="py-20 px-6" id="projects">
       <div className="max-w-6xl mx-auto">
-        <div 
+        <div
           ref={titleRef}
-          className={`text-center mb-16 scroll-animate ${titleVisible ? 'animate-in' : ''}`}
+          className={`text-center mb-16 scroll-animate ${titleVisible ? "animate-in" : ""}`}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
-            Current Projects
+            Featured Project
           </h2>
           <p className="text-xl text-muted-foreground">
-            Building innovative solutions with modern technology
+            Production-oriented full-stack engineering
           </p>
         </div>
 
-        <Card 
+        <Card
           ref={cardRef}
-          variant="glass" 
-          className={`scroll-animate-right ${cardVisible ? 'animate-in' : ''}`}
+          variant="glass"
+          className={`scroll-animate-right ${cardVisible ? "animate-in" : ""}`}
         >
-          <CardHeader>
-            <div className="flex items-start gap-4">
-              <div className="p-4 rounded-lg bg-accent/10 border border-accent/20">
-                <ShoppingCart className="w-8 h-8 text-accent" />
+          {/* Header */}
+          <CardHeader className="border-b border-border/40">
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
+                  <Layers className="w-7 h-7 text-primary" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <CardTitle className="text-2xl md:text-3xl leading-tight">
+                      Satvik Basket
+                    </CardTitle>
+                    <Badge
+                      variant="outline"
+                      className="bg-accent/10 text-accent border-accent/30 flex items-center gap-1.5"
+                    >
+                      <CircleDot className="w-3 h-3" />
+                      Deployed
+                    </Badge>
+                  </div>
+                  <p className="text-muted-foreground max-w-2xl leading-relaxed">
+                    A scalable full-stack ecommerce platform built on the MERN stack, designed
+                    around backend reliability, secure authentication, verified payments, and
+                    production engineering practices.
+                  </p>
+                </div>
               </div>
-              <div className="flex-1">
-                <CardTitle className="text-2xl leading-tight mb-3">
-                  Satvik Basket
-                </CardTitle>
-                <CardDescription className="text-lg">
-                  Full-stack e-commerce application built on the MERN stack
-                </CardDescription>
-                <Badge variant="outline" className="mt-3 bg-accent/10 text-accent border-accent/30">
-                  Deployed
-                </Badge>
+
+              <div className="flex flex-wrap gap-3 md:flex-col md:items-end">
+                <Button variant="hero" size="sm" asChild className="group">
+                  <a
+                    href="https://github.com/Kamalanjali/Satvik-Basket-MERN-main"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="mr-2 group-hover:rotate-12 transition-transform" />
+                    Source Code
+                  </a>
+                </Button>
+                <Button variant="glass" size="sm" asChild className="group">
+                  <a
+                    href="https://satvikbasket.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="mr-2" />
+                    Live Demo
+                  </a>
+                </Button>
               </div>
             </div>
           </CardHeader>
-          
-          <CardContent className="space-y-6">
-            {/* Project Description */}
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-primary">Project Overview</h3>
-              <p className="text-card-foreground leading-relaxed">
-                A deployed full-stack e-commerce application built on the MERN stack, featuring
-                secure authentication, payment integration, order management, and a responsive,
-                user-friendly shopping experience.
-              </p>
-            </div>
 
+          <CardContent className="space-y-12 pt-8">
             {/* Tech Stack */}
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-primary">Technology Stack</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div className="flex items-center gap-3 p-4 rounded-lg bg-background-soft/50 border border-border/30">
-                  <Code className="w-6 h-6 text-accent" />
-                  <div>
-                    <div className="font-medium">Frontend</div>
-                    <div className="text-sm text-muted-foreground">React.js, Redux</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-4 rounded-lg bg-background-soft/50 border border-border/30">
-                  <Database className="w-6 h-6 text-accent" />
-                  <div>
-                    <div className="font-medium">Backend</div>
-                    <div className="text-sm text-muted-foreground">Node.js, Express.js</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-4 rounded-lg bg-background-soft/50 border border-border/30">
-                  <Layers className="w-6 h-6 text-accent" />
-                  <div>
-                    <div className="font-medium">Database</div>
-                    <div className="text-sm text-muted-foreground">MongoDB</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-4 rounded-lg bg-background-soft/50 border border-border/30">
-                  <ShoppingCart className="w-6 h-6 text-accent" />
-                  <div>
-                    <div className="font-medium">Integrations</div>
-                    <div className="text-sm text-muted-foreground">Razorpay, Google OAuth, JWT</div>
-                  </div>
-                </div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="h-px flex-1 bg-border/40" />
+                <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                  Stack
+                </span>
+                <div className="h-px flex-1 bg-border/40" />
               </div>
-
-              {/* Technology Badges */}
-              <div className="flex flex-wrap gap-3">
-                {["MongoDB", "Express.js", "React.js", "Node.js", "JWT", "Google OAuth", "Razorpay", "REST API"].map((tech, index) => (
-                  <Badge 
-                    key={index}
+              <div className="flex flex-wrap gap-2 justify-center">
+                {stack.map((tech) => (
+                  <Badge
+                    key={tech}
                     variant="secondary"
-                    className="px-4 py-2 text-sm bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors duration-300"
+                    className="px-3 py-1.5 text-xs font-mono bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors"
                   >
                     {tech}
                   </Badge>
@@ -106,65 +250,94 @@ const Projects = () => {
               </div>
             </div>
 
-            {/* Features */}
+            {/* Core Pillars */}
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-primary">Key Features</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {[
-                  "Google OAuth authentication",
-                  "Razorpay payment integration (test APIs, swappable to live)",
-                  "JWT-based secure sessions",
-                  "Orders page with order history",
-                  "Custom user profile page",
-                  "Shopping cart and checkout",
-                  "Multiple addresses with default selection",
-                  "Add and delete saved addresses",
-                  "Fully responsive design",
-                  "REST API architecture"
-                ].map((feature, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-gradient-glow border border-primary/10"
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold text-primary mb-1">Application Architecture</h3>
+                <p className="text-sm text-muted-foreground">
+                  Core domain modules powering the user-facing experience.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {pillars.map((p) => (
+                  <div
+                    key={p.title}
+                    className="rounded-lg border border-border/40 bg-background-soft/40 p-5 hover:border-primary/40 hover:bg-background-soft/60 transition-all duration-300 group"
                   >
-                    <div className="w-2 h-2 rounded-full bg-accent" />
-                    <span className="text-sm">{feature}</span>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 rounded-md bg-primary/10 text-primary border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                        {p.icon}
+                      </div>
+                      <h4 className="font-semibold text-card-foreground leading-tight">
+                        {p.title}
+                      </h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                      {p.blurb}
+                    </p>
+                    <ul className="space-y-2">
+                      {p.items.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-2 text-sm text-card-foreground/90"
+                        >
+                          <CheckCircle2 className="w-3.5 h-3.5 text-accent mt-0.5 flex-shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Button 
-                variant="hero" 
-                size="lg" 
-                asChild
-                className="group"
-              >
-                <a 
-                  href="https://github.com/Kamalanjali/Satvik-Basket-MERN-main" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+            {/* Production Engineering */}
+            <div>
+              <div className="mb-6 flex items-center justify-between flex-wrap gap-3">
+                <div>
+                  <h3 className="text-xl font-semibold text-primary mb-1">
+                    Production Engineering
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Reliability, security, and observability layered on top of the product.
+                  </p>
+                </div>
+                <Badge
+                  variant="outline"
+                  className="font-mono text-xs bg-accent/10 text-accent border-accent/30"
                 >
-                  <Github className="mr-2 group-hover:rotate-12 transition-transform" />
-                  View Source Code
-                </a>
-              </Button>
-              <Button 
-                variant="glass" 
-                size="lg"
-                asChild
-                className="group"
-              >
-                <a
-                  href="https://satvikbasket.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink className="mr-2" />
-                  Live Demo
-                </a>
-              </Button>
+                  prod-ready
+                </Badge>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {productionGroups.map((g) => (
+                  <div
+                    key={g.title}
+                    className="rounded-lg border border-border/40 bg-background-soft/30 p-5 hover:border-accent/40 transition-all duration-300"
+                  >
+                    <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border/30">
+                      <div className="p-1.5 rounded-md bg-accent/10 text-accent border border-accent/20">
+                        {g.icon}
+                      </div>
+                      <h4 className="font-semibold text-sm text-card-foreground">
+                        {g.title}
+                      </h4>
+                    </div>
+                    <ul className="space-y-2">
+                      {g.items.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-2 text-sm text-muted-foreground"
+                        >
+                          <span className="mt-2 w-1 h-1 rounded-full bg-accent flex-shrink-0" />
+                          <span className="leading-relaxed">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           </CardContent>
         </Card>
