@@ -40,27 +40,23 @@ const Timeline = () => {
       details: [
         {
           icon: <Code className="w-4 h-4" />,
-          text: "Developed and maintained full-stack web applications using MERN stack, Python, and SQL"
-        },
-        {
-          icon: <Database className="w-4 h-4" />,
-          text: "Designed and optimized REST APIs and database queries, improving performance by 20%"
-        },
-        {
-          icon: <Bug className="w-4 h-4" />,
-          text: "Resolved 100+ client-reported tickets by identifying root causes and delivering efficient fixes within SLA"
-        },
-        {
-          icon: <Users className="w-4 h-4" />,
-          text: "Collaborated with cross-functional teams using Agile methodology to deliver high-quality features"
+          text: "Developed and maintained 30+ backend APIs supporting scalable request handling, database operations, and production backend workflows using Node.js and SQL databases"
         },
         {
           icon: <TrendingUp className="w-4 h-4" />,
-          text: "Participated in software testing, debugging, and deployment to ensure reliability and compliance"
+          text: "Improved backend request handling reliability by optimizing asynchronous workflows and debugging concurrent runtime issues"
         },
         {
-          icon: <Lightbulb className="w-4 h-4" />,
-          text: "Mentored interns in basic JavaScript and SQL problem-solving tasks"
+          icon: <Bug className="w-4 h-4" />,
+          text: "Resolved 30+ production issues through debugging, root-cause analysis, backend optimization, and issue tracking"
+        },
+        {
+          icon: <Users className="w-4 h-4" />,
+          text: "Collaborated within Agile teams using Git, API testing tools, code reviews, sprint workflows, and cross-functional communication"
+        },
+        {
+          icon: <Database className="w-4 h-4" />,
+          text: "Contributed to backend maintainability, scalability improvements, and production support across multiple enterprise modules"
         }
       ],
       technologies: ["MERN Stack", "Python", "SQL", "REST APIs", "JavaScript", "Agile", "Testing", "Debugging"]
