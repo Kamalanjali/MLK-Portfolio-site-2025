@@ -17,6 +17,7 @@ const Navigation = () => {
   }, [])
 
   const navItems = [
+    { label: "Home", href: "#hero" },
     { label: "Projects", href: "#projects" },
     { label: "Experience", href: "#timeline" },
     { label: "Skills", href: "#skills" },
