@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/enhanced-button"
-import { Github, Linkedin, Mail, Download } from "lucide-react"
+import { Github, Linkedin, Mail, Briefcase, Rocket, Layers, Server } from "lucide-react"
 import heroBackground from "@/assets/hero-background.jpg"
 const profilePhotoUrl = "/lovable-uploads/dbe46c0f-a10d-4d8a-80c9-33bfeaa203ca.png"
 
@@ -41,8 +41,12 @@ const Hero = () => {
                 Mandalika
               </h2>
               <div className="text-xl md:text-2xl text-muted-foreground animate-fade-in-left">
-                <p className="mb-2">Full Stack Developer</p>
-                <p className="text-lg">MERN Stack • Python • Cloud and AI enthusiast</p>
+                <p className="mb-3 text-lg md:text-xl text-foreground/90 font-medium max-w-2xl">
+                  Full Stack JavaScript Developer Building Production-Ready MERN Applications
+                </p>
+                <p className="text-sm md:text-base max-w-2xl leading-relaxed">
+                  React • Node.js • Express • MongoDB • REST APIs • JWT Auth • OAuth • Deployment
+                </p>
                 <p className="text-base mt-4 text-accent">Hyderabad, Telangana, India</p>
               </div>
             </div>
@@ -73,6 +77,24 @@ const Hero = () => {
           >
             <Mail className="w-6 h-6" />
           </a>
+        </div>
+
+        {/* Credibility Metrics */}
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto animate-fade-in">
+          {[
+            { icon: <Briefcase className="w-5 h-5" />, label: "2+ Years Experience" },
+            { icon: <Rocket className="w-5 h-5" />, label: "Production Projects" },
+            { icon: <Layers className="w-5 h-5" />, label: "MERN Stack Specialist" },
+            { icon: <Server className="w-5 h-5" />, label: "Backend & API Development" },
+          ].map((m) => (
+            <div
+              key={m.label}
+              className="flex items-center gap-3 p-4 rounded-lg bg-card/40 backdrop-blur-glass border border-border/50 hover:border-primary/30 transition-all duration-300"
+            >
+              <div className="text-primary">{m.icon}</div>
+              <span className="text-sm font-medium text-foreground/90">{m.label}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
