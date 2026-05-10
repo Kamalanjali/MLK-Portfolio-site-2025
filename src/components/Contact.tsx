@@ -146,17 +146,17 @@ const Contact = () => {
   ]
 
   return (
-    <section className="py-20 px-6" id="contact">
+    <section className="py-16 px-6" id="contact">
       <div className="max-w-6xl mx-auto">
         <div 
           ref={titleRef}
-          className={`text-center mb-16 scroll-animate ${titleVisible ? 'animate-in' : ''}`}
+          className={`text-center mb-12 scroll-animate ${titleVisible ? 'animate-in' : ''}`}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
             Get In Touch
           </h2>
-          <p className="text-xl text-muted-foreground">
-            Ready to collaborate? Let's build something amazing together
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Open to Full Stack, MERN Stack, Backend, and React Developer opportunities — let's build something reliable together.
           </p>
         </div>
 

@@ -17,10 +17,11 @@ const Navigation = () => {
   }, [])
 
   const navItems = [
-    { label: "Experience & Education", href: "#timeline" },
-    { label: "Publications", href: "#publications" },
     { label: "Projects", href: "#projects" },
-    { label: "Certificates", href: "#certificates" },
+    { label: "Experience", href: "#timeline" },
+    { label: "Skills", href: "#skills" },
+    { label: "Certifications", href: "#certificates" },
+    { label: "Publications", href: "#publications" },
     { label: "Contact", href: "#contact" }
   ]
 
