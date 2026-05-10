@@ -142,6 +142,18 @@ const Contact = () => {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/lakshmi-kamalanjali-mandalika-4b5119188/",
       color: "hover:text-accent"
+    },
+    {
+      icon: <Mail className="w-6 h-6" />,
+      label: "Email",
+      href: "mailto:kamalanjalimetta31@gmail.com",
+      color: "hover:text-primary"
+    },
+    {
+      icon: <Download className="w-6 h-6" />,
+      label: "Resume",
+      href: "/resume.pdf",
+      color: "hover:text-accent"
     }
   ]
 
