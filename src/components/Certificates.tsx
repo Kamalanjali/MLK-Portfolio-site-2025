@@ -58,43 +58,40 @@ const Certificates = () => {
           </p>
         </div>
 
-        <div 
+        <div
           ref={cardsRef}
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scroll-animate ${cardsVisible ? 'animate-in' : ''}`}
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 scroll-animate ${cardsVisible ? 'animate-in' : ''}`}
         >
           {certificates.map((cert, index) => (
-            <Card 
-              key={index} 
-              variant="glass" 
-              className={`group hover:scale-105 transition-all duration-300 ${
-                cert.highlighted ? 'md:col-span-2 lg:col-span-3 border-primary/50 shadow-glow' : ''
-              }`}
+            <Card
+              key={index}
+              variant="glass"
+              className="group hover:border-primary/40 transition-all duration-300"
             >
-              <CardHeader className="pb-4">
-                <div className="flex items-start justify-between mb-3">
-                  <Award className={`w-6 h-6 ${cert.highlighted ? 'text-primary animate-pulse' : 'text-primary'}`} />
-                  <Badge className={cert.color}>
-                    {cert.category}
-                  </Badge>
+              <CardHeader className="pb-3">
+                <div className="flex items-start justify-between mb-2">
+                  <Award className="w-5 h-5 text-primary" />
+                  <Badge className={`${cert.color} text-xs`}>{cert.category}</Badge>
                 </div>
-                <CardTitle className={`leading-tight ${cert.highlighted ? 'text-xl md:text-2xl' : 'text-lg'}`}>
+                <CardTitle className="text-base leading-snug">
                   {cert.title}
                 </CardTitle>
-                <p className="text-sm text-muted-foreground font-medium">
+                <p className="text-xs text-muted-foreground font-medium">
                   {cert.provider}
                 </p>
               </CardHeader>
               <CardContent className="pt-0">
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
                   {cert.description}
                 </p>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
+                  size="sm"
                   className="w-full group"
                   onClick={() => window.open(cert.link, '_blank')}
                 >
-                  <ExternalLink className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
-                  View Certificate
+                  <ExternalLink className="w-3.5 h-3.5 mr-1.5 group-hover:translate-x-0.5 transition-transform" />
+                  View
                 </Button>
               </CardContent>
             </Card>
