@@ -32,6 +32,29 @@ const Timeline = () => {
   const timelineData = [
     {
       type: "experience",
+      date: "2023 - Present",
+      title: "Full Stack Developer — Independent Projects",
+      institution: "Self-Directed",
+      icon: <Code className="w-6 h-6" />,
+      description: "Production-focused MERN application development",
+      details: [
+        {
+          icon: <Code className="w-4 h-4" />,
+          text: "Built and deployed production-focused MERN applications with JWT authentication, REST APIs, OAuth integration, and responsive frontend architecture"
+        },
+        {
+          icon: <Database className="w-4 h-4" />,
+          text: "Improved backend maintainability through modular architecture and centralized error handling"
+        },
+        {
+          icon: <TrendingUp className="w-4 h-4" />,
+          text: "Focused on deployment stability, scalable workflows, and production debugging practices"
+        }
+      ],
+      technologies: ["MERN", "JWT", "OAuth", "REST APIs", "Vercel", "Render"]
+    },
+    {
+      type: "experience",
       date: "Sep 2021 - Nov 2023",
       title: "System Engineer",
       institution: "Infosys Limited",
@@ -40,26 +63,18 @@ const Timeline = () => {
       details: [
         {
           icon: <Code className="w-4 h-4" />,
-          text: "Developed and maintained 30+ backend APIs supporting scalable request handling, database operations, and production backend workflows using Node.js and SQL databases"
-        },
-        {
-          icon: <TrendingUp className="w-4 h-4" />,
-          text: "Improved backend request handling reliability by optimizing asynchronous workflows and debugging concurrent runtime issues"
+          text: "Developed and maintained backend APIs supporting scalable request handling and production workflows"
         },
         {
           icon: <Bug className="w-4 h-4" />,
-          text: "Resolved 30+ production issues through debugging, root-cause analysis, backend optimization, and issue tracking"
+          text: "Debugged asynchronous backend issues and improved request reliability across enterprise modules"
         },
         {
           icon: <Users className="w-4 h-4" />,
-          text: "Collaborated within Agile teams using Git, API testing tools, code reviews, sprint workflows, and cross-functional communication"
-        },
-        {
-          icon: <Database className="w-4 h-4" />,
-          text: "Contributed to backend maintainability, scalability improvements, and production support across multiple enterprise modules"
+          text: "Collaborated in Agile teams using Git, API testing tools, and deployment workflows"
         }
       ],
-      technologies: ["MERN Stack", "Python", "SQL", "REST APIs", "JavaScript", "Agile", "Testing", "Debugging"]
+      technologies: ["Node.js", "REST APIs", "SQL", "Agile", "Debugging"]
     },
     {
       type: "education",
@@ -73,22 +88,11 @@ const Timeline = () => {
     {
       type: "education",
       date: "2014 - 2016",
-      title: "Intermediate (Mathematics, Physics and Chemistry)",
-      institution: "Sri Chaitanya Junior College, Steel Plant, Visakhapatnam",
+      title: "Intermediate (MPC)",
+      institution: "Sri Chaitanya Junior College, Visakhapatnam",
       icon: <School className="w-6 h-6" />,
       score: "925/1000",
-      board: "Board of Intermediate Education, Andhra Pradesh",
       description: "Higher Secondary Education"
-    },
-    {
-      type: "education",
-      date: "2014",
-      title: "10th Class",
-      institution: "Sri Chaitanya English Medium School, Anakapalle",
-      icon: <BookOpen className="w-6 h-6" />,
-      score: "CGPA: 9.8/10",
-      board: "Secondary School of Education, Andhra Pradesh",
-      description: "Secondary School Education"
     }
   ]
 
