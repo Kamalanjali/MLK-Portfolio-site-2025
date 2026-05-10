@@ -194,8 +194,8 @@ const projects: Project[] = [
     icon: <StickyNote className="w-7 h-7 text-primary" />,
     description:
       "A full-stack MERN notes management platform designed around authenticated user workflows, maintainable frontend architecture, deployment reliability, and scalable backend request handling.",
-    github: "https://github.com/Kamalanjali/NoteFlow",
-    live: "https://noteflow.vercel.app/",
+    github: "https://github.com/Kamalanjali/NoteFlow-MERN",
+    live: "https://noteflow-mern.vercel.app/",
     stack: [
       "MongoDB",
       "Express.js",
