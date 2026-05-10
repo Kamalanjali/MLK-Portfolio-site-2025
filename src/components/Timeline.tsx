@@ -171,11 +171,8 @@ const Timeline = () => {
                         </div>
                       )}
 
-                      {item.board && (
-                        <div className="text-muted-foreground">
-                          <span className="font-medium">Board:</span> {item.board}
-                        </div>
-                      )}
+
+
 
                       {item.details && (
                         <div className="space-y-3">
