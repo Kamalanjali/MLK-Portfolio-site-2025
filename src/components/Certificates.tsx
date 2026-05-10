@@ -63,17 +63,17 @@ const Certificates = () => {
   ]
 
   return (
-    <section className="py-20 px-6" id="certificates">
+    <section className="py-16 px-6" id="certificates">
       <div className="max-w-6xl mx-auto">
         <div 
           ref={titleRef}
-          className={`text-center mb-16 scroll-animate ${titleVisible ? 'animate-in' : ''}`}
+          className={`text-center mb-12 scroll-animate ${titleVisible ? 'animate-in' : ''}`}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
-            Certificates & Achievements
+            Certifications
           </h2>
-          <p className="text-xl text-muted-foreground">
-            Professional certifications and completed courses
+          <p className="text-lg text-muted-foreground">
+            Cloud, AI, and programming certifications
           </p>
         </div>
 

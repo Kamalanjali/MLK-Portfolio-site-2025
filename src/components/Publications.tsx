@@ -9,16 +9,16 @@ const Publications = () => {
   const { elementRef: cardRef, isVisible: cardVisible } = useScrollAnimation()
   
   return (
-    <section className="py-20 px-6" id="publications">
+    <section className="py-16 px-6" id="publications">
       <div className="max-w-6xl mx-auto">
         <div 
           ref={titleRef}
-          className={`text-center mb-16 scroll-animate ${titleVisible ? 'animate-in' : ''}`}
+          className={`text-center mb-12 scroll-animate ${titleVisible ? 'animate-in' : ''}`}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
             Publications
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg text-muted-foreground">
             Research contributions in IoT and automation
           </p>
         </div>
